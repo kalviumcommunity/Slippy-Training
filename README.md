@@ -1,3 +1,12 @@
+Blogify, a blog application that unleashes the writer within. With its sleek design and intuitive interface, Blogify transforms the art of blogging into an exhilarating experience. Customize your blog with captivating themes, effortlessly blending style and substance. Dive into the distraction-free writing environment, where words flow freely and ideas take flight. Seamlessly integrate stunning visuals with the built-in image editor, captivating your readers' senses.😊
+
+Here is the tech stack that will be used for develpoment of Blogify-
+
+1. Nuxt Js {for building server-side rendered (SSR) and static website} - https://nuxt.com/
+2. Typescript - https://typescript.nuxtjs.org/
+3. Firebase - https://firebase.google.com/docs/firestore
+
+As a part of devlopment of Blogify, the high fidility application is designed with Figma (https://www.figma.com/) Here is the link to the figma design file of Blogify - https://www.figma.com/file/1NAVtT22GWbuvAyq6PHk7s/The-Blog?type=design&node-id=0%3A1&t=fmlziqQaIhLAxgQE-1
 # Turborepo nuxt starter
 
 [![CI/CD](https://github.com/gurvan-guss/turborepo-nuxt-boilerplate/actions/workflows/ci.yaml/badge.svg)](https://github.com/gurvan-guss/turborepo-nuxt-boilerplate/actions/workflows/ci.yaml)
