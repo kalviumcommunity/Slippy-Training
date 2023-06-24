@@ -1,18 +1,30 @@
 <<<<<<< HEAD
+
 # Slippy-Training
 
+Blogify, a blog application that unleashes the writer within. With its sleek design and intuitive interface, Blogify transforms the art of blogging into an exhilarating experience. Customize your blog with captivating themes, effortlessly blending style and substance. Dive into the distraction-free writing environment, where words flow freely and ideas take flight. Seamlessly integrate stunning visuals with the built-in image editor, captivating your readers' senses.😊
 
+Here is the tech stack that will be used for develpoment of Blogify-
+
+    1. Nuxt Js {for building server-side rendered (SSR) and static website} - https://nuxt.com/
+    2. Typescript - https://typescript.nuxtjs.org/
+    3. Firebase - https://firebase.google.com/docs/firestore
+
+As a part of devlopment of Blogify, the high fidility application is designed with Figma (https://www.figma.com/)
+Here is the link to the figma design file of Blogify - https://www.figma.com/file/1NAVtT22GWbuvAyq6PHk7s/The-Blog?type=design&node-id=0%3A1&t=fmlziqQaIhLAxgQE-1
 
 =======
+
 # Turborepo nuxt starter
 
 [![CI/CD](https://github.com/gurvan-guss/turborepo-nuxt-boilerplate/actions/workflows/ci.yaml/badge.svg)](https://github.com/gurvan-guss/turborepo-nuxt-boilerplate/actions/workflows/ci.yaml)
 [![App](https://img.shields.io/badge/App-Preview-blue?logo=netlify&logoColor=white)](https://turborepo-nuxt-boilerplate-web-main.netlify.app/)
-[![UI](https://img.shields.io/badge/UI(Histoire)-Preview-blue?logo=netlify&logoColor=white)](https://turborepo-nuxt-boilerplate-ui-main.netlify.app/)
-[![Docs](https://img.shields.io/badge/Docs(Vitepress)-Preview-blue?logo=netlify&logoColor=white)](https://turborepo-nuxt-boilerplate-docs-main.netlify.app/)
+[![UI](<https://img.shields.io/badge/UI(Histoire)-Preview-blue?logo=netlify&logoColor=white>)](https://turborepo-nuxt-boilerplate-ui-main.netlify.app/)
+[![Docs](<https://img.shields.io/badge/Docs(Vitepress)-Preview-blue?logo=netlify&logoColor=white>)](https://turborepo-nuxt-boilerplate-docs-main.netlify.app/)
 
 This is a monorepo with Nuxt, Histoire, Vitest & VitePress as a starter for any project that can be easily extended.
 You can also find additional branches:
+
 - [TailwindCSS](https://github.com/gurvan-guss/turborepo-nuxt-boilerplate/tree/tailwind)
 - [TailwindCSS + TailwindUI](https://github.com/gurvan-guss/turborepo-nuxt-boilerplate/tree/tailwindui)
 - [Unocss](https://github.com/gurvan-guss/turborepo-nuxt-boilerplate/tree/unocss)
@@ -112,4 +124,4 @@ Learn more about the power of Turborepo:
 - [Scoped Tasks](https://turborepo.org/docs/core-concepts/scopes)
 - [Configuration Options](https://turborepo.org/docs/reference/configuration)
 - [CLI Usage](https://turborepo.org/docs/reference/command-line-reference)
->>>>>>> 792e873d70506375dd6dc8e4d4a8e58e01ced9ee
+  > > > > > > > 792e873d70506375dd6dc8e4d4a8e58e01ced9ee
