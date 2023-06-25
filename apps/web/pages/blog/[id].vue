@@ -1,9 +1,10 @@
 <template>
-    <div class="text-blue-800">
-        <h1>http://localhost:3000/blog/{{ route.params.id }}</h1>
-    </div>
+  <div>
+    <h1>This is where blogs will be read</h1>
+    <p>on -clicking the blog , it should redirect with unique id</p>
+  </div>
 </template>
 
-<script setup >
-const route = useRoute()
-</script>
+<script lang="ts"></script>
+
+<style scoped></style>
