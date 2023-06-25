@@ -7,12 +7,8 @@ Here is the tech stack that will be used for develpoment of Blogify-
 3. Firebase - https://firebase.google.com/docs/firestore
 
 As a part of devlopment of Blogify, the high fidility application is designed with Figma (https://www.figma.com/) Here is the link to the figma design file of Blogify - https://www.figma.com/file/1NAVtT22GWbuvAyq6PHk7s/The-Blog?type=design&node-id=0%3A1&t=fmlziqQaIhLAxgQE-1
-# Turborepo nuxt starter
 
-[![CI/CD](https://github.com/gurvan-guss/turborepo-nuxt-boilerplate/actions/workflows/ci.yaml/badge.svg)](https://github.com/gurvan-guss/turborepo-nuxt-boilerplate/actions/workflows/ci.yaml)
-[![App](https://img.shields.io/badge/App-Preview-blue?logo=netlify&logoColor=white)](https://turborepo-nuxt-boilerplate-web-main.netlify.app/)
-[![UI](https://img.shields.io/badge/UI(Histoire)-Preview-blue?logo=netlify&logoColor=white)](https://turborepo-nuxt-boilerplate-ui-main.netlify.app/)
-[![Docs](https://img.shields.io/badge/Docs(Vitepress)-Preview-blue?logo=netlify&logoColor=white)](https://turborepo-nuxt-boilerplate-docs-main.netlify.app/)
+
 
 This is a monorepo with Nuxt, Histoire, Vitest & VitePress as a starter for any project that can be easily extended.
 You can also find additional branches:
@@ -23,9 +19,6 @@ You can also find additional branches:
 - [Unocss + Vuetify](https://github.com/gurvan-guss/turborepo-nuxt-boilerplate/tree/unocss-vuetify)
 - [AdonisJS](https://github.com/gurvan-guss/turborepo-nuxt-boilerplate/tree/adonis)
 
-## What's inside?
-
-This turborepo uses [pnpm](https://pnpm.io) as a package manager. It includes the following packages/apps:
 
 ### Apps and Packages
 
