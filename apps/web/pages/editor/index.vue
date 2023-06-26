@@ -1,13 +1,21 @@
 <template>
-
-            <div>
-                    <h2 class="h-8 flex items-center justify-center">Edit with Quill</h2>
-            </div>
-    <div class="bg-gray-200 h-screen mx-8 mr-96 ">
-        <QuillEditor class="" theme="snow" :toolbar="toolbar" :modules="modules" v-model:content="editorContent"
-            content-type="html" />
+    <div>
+        <h2 class="h-10 flex items-center justify-center">Edit with Quill</h2>
     </div>
-    <button @click="showContent">Preview Content</button>
+
+    <div class="relative">
+        <div class="bg-gray-200 h-screen mx-8 mr-96">
+            <QuillEditor class="" theme="snow" :toolbar="toolbar" :modules="modules" v-model:content="editorContent"
+                content-type="html" />
+        </div>
+        <div class="absolute bottom-4 right-4 flex flex-col mb-9 mr-16">
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mb-2">PUBLISH</button>
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mb-2">DRAFT/SAVE</button>
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4"
+                @click="showContent">PREVIEW</button>
+        </div>
+    </div>
+
     <br>
     <div id="content_container" class="ql-container ql-snow">
         <div id="content" class="ql-editor" v-html="contentHTML"></div>
