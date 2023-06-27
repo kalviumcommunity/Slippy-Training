@@ -35,7 +35,7 @@
             <div class="shadow rounded p-3 mt-5">
                 <BlogMyBlogs v-for="blog in blogs" :key="blog.id" :blog="blog"/>
             </div>
-            <div class="flex align-center justify-center">
+            <div class="flex align-center justify-center pb-10">
                 <button class="bg-orange-500 text-black h-10 rounded-full px-4 m-15 w-1/10">Continue Reading</button>
             </div>
             
