@@ -15,10 +15,10 @@
   </template>
   
   <script setup >
-    import github from "../assests/images/github.png"
+    import github from '../assests/images/github.png'
     import linkedin from "../assests/images/linkedin.png"
     import email from "../assests/images/email.png"
-    import logo from '../assests/images/Rectangle 5.png'
+    import logo from '../assests/images/Rectangle 5.png' 
   </script>
   
   <style scoped>
