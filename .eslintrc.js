@@ -7,4 +7,8 @@ module.exports = {
       rootDir: ['apps/*/'],
     },
   },
+  rules: {
+    "no-console": 1 // shows error for console.log (2- for warnig, 0 - for off)
+
+  }
 }
