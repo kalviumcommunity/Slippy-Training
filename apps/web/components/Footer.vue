@@ -16,7 +16,7 @@
   
   <script setup >
     import github from '../assests/images/github.png'
-    import linkedin from "../assests/images/linkedin.png"
+    import linkedin from "../assests/images/linkedIn.png"
     import email from "../assests/images/email.png"
     import logo from '../assests/images/Rectangle 5.png' 
   </script>
