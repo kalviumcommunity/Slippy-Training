@@ -24,8 +24,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- <h1>http://localhost:3000/login</h1> -->
         </div>
     </div>
 </template>
