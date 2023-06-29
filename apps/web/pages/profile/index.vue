@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="flex justify-center">
+        <div class="flex justify-center mt-10">
   <div class="max-w-xl bg-white border border-black rounded-lg overflow-hidden shadow-lg">
     <div class="flex">
       <img class="w-1/3 p-2" src="https://img.freepik.com/free-icon/user_318-159711.jpg" alt="User Photo">
@@ -22,7 +22,7 @@
 <div class="flex justify-between mt-12 items-center">
     <h1 class="text-6xl">My Blogs!</h1>
             <NuxtLink to="/editor"
-                class="w-8 h-8 bg-blue-400 flex justify-center items-center rounded-full text-white font-bold cursor-pointer">
+                class="w-8 h-8 bg-orange-400 flex justify-center items-center rounded-full text-white font-bold cursor-pointer">
                 +</NuxtLink>
 </div>
     <div class="shadow rounded p-3 mt-5">
