@@ -10,3 +10,5 @@ export const app = initializeApp({
   }),
 });
 export const firestore = getFirestore();
+
+export const blogCollection = firestore.collection('blogs')
