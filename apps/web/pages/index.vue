@@ -22,7 +22,7 @@
                 <img :src="blogger" alt="">
                 <div class="flex items-center justify-around flex-col w-1/3">
                     <span class="text-3xl">Amplify Your voice, Illuminate the World: Blogging made effortless, Start your journey as blogger today with us</span>
-                    <button class="bg-orange-500 text-black h-10 rounded-full px-4 m-15">Start Blogging Now</button>
+                    <button class="bg-orange-500 text-black h-10 rounded-full px-4 m-15"><nuxt-link to="/editor">Start Blogging Now</nuxt-link></button>
                 </div>
             </div>
             <hr>
@@ -36,7 +36,7 @@
                 <BlogMyBlogs v-for="blog in blogs" :key="blog.id" :blog="blog"/>
             </div>
             <div class="flex align-center justify-center pb-10">
-                <button class="bg-orange-500 text-black h-10 rounded-full px-4 m-15 w-1/10">Continue Reading</button>
+                <button class="bg-orange-500 text-black h-10 rounded-full px-4 m-15 w-1/10"><nuxt-link to="/blogs">Continue Reading</nuxt-link></button>
             </div>
             
 
