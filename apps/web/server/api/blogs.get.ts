@@ -1,14 +1,14 @@
-import { firestore } from '../utils/firebase';
+import { blogCollection } from '../utils/firebase';
 
+export default defineEventHandler(async (event: object) => {
+  // Perform the GET request
+  const snapshot = await blogCollection.get();
 
+  // Extract the data from the snapshot
+  const data: { id: string, [key: string]: any }[] = [];
+  snapshot.forEach((doc: FirebaseFirestore.DocumentData) => {
+    data.push({ id: doc.id, ...doc.data() });
+  });
 
-export default defineEventHandler(async (event) => { 
-    const config = useRuntimeConfig()
-    console.log("config",config);
-    const ref = firestore.doc(`testdb/testdb`);
-    const snapshot = await ref.get();
-    const data = snapshot.data();
-    console.log("config",config);
-    
-    return data;
-})
+  return { status: true, data: data };
+});
