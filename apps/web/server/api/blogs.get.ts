@@ -10,5 +10,6 @@ export default defineEventHandler(async (event: object) => {
     data.push({ id: doc.id, ...doc.data() });
   });
 
+
   return { status: true, data: data };
 });
