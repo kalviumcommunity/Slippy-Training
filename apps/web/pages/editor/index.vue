@@ -59,6 +59,7 @@ const modules = [
                             "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/480px-JavaScript-logo.png"
                         );
 
+                        const config = useRuntimeConfig()
                     }, 3500);
                 });
             }
@@ -70,6 +71,7 @@ const editorContent = ref("<p>Type in your favorite blogs in here!! 😄😄😄
 const contentHTML = ref("");
 
 function showContent() {
+    console.log(editorContent.value);
     contentHTML.value = editorContent.value;
 }
 
