@@ -67,7 +67,7 @@ const modules = [
     }
 ];
 
-const editorContent = ref("<p>Hello World!</p>");
+const editorContent = ref("<p>Type in your favorite blogs in here!! 😄😄😄</p>");
 const contentHTML = ref("");
 
 function showContent() {
