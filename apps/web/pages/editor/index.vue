@@ -55,11 +55,11 @@ const modules = [
             upload: file => {
                 return new Promise((resolve, reject) => {
                     setTimeout(() => {
-                        console.log(file)
                         resolve(
                             "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/480px-JavaScript-logo.png"
                         );
 
+                        const config = useRuntimeConfig()
                     }, 3500);
                 });
             }
@@ -67,13 +67,12 @@ const modules = [
     }
 ];
 
-const editorContent = ref("<p>Hello World!</p>");
+const editorContent = ref("<p>Type in your favorite blogs in here!! 😄😄😄</p>");
 const contentHTML = ref("");
 
 function showContent() {
+    console.log(editorContent.value);
     contentHTML.value = editorContent.value;
-
-    console.log(editorContent.value)
 }
 
 </script>
