@@ -9,8 +9,11 @@
                 content-type="html" />
         </div>
         <div class="absolute bottom-4 right-4 flex flex-col mb-9 mr-16">
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mb-2">PUBLISH</button>
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mb-2">DRAFT/SAVE</button>
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mb-2"
+                @click="publish">PUBLISH</button>
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mb-2" @click="draft">
+                DRAFT
+            </button>
             <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4"
                 @click="showContent">PREVIEW</button>
         </div>
@@ -32,14 +35,13 @@ import 'quill-image-uploader/dist/quill.imageUploader.min.css';
 const toolbar = [
     [{ header: [1, 2, false] }],
     ['bold', 'italic', 'underline', 'strike', 'underline', 'link'],
-    ['image', 'video',],
-    ['color', 'script',]
+    ['image', 'video'],
+    ['color', 'script'],
     [{ color: [] }, { background: [] }],
     [{ script: "sub" }, { script: "super" }],
     ["blockquote", "code-block"],
     [{ list: "ordered" }, { list: "bullet" }],
     [{ indent: "-1" }, { indent: "+1" }, { align: [] }],
-
 ];
 
 const modules = [
@@ -70,12 +72,49 @@ const modules = [
 const editorContent = ref("<p>Type in your favorite blogs in here!! 😄😄😄</p>");
 const contentHTML = ref("");
 
-function showContent() {
+const publishBody = ref({
+    content: editorContent.value,
+    isPublished: true
+});
+
+const draftBody = ref({
+    content: editorContent.value,
+    isPublished: false
+});
+
+watch(editorContent, () => {
+    publishBody.value.content = editorContent.value;
+    draftBody.value.content = editorContent.value;
+});
+
+async function publish() {
+    const { data: response } = await $fetch('/api/blog/create', {
+        method: 'post',
+        body: publishBody.value
+    });
+    if (response) {
+        // console.log(response);
+        return
+
+    }
+}
+
+async function draft() {
+    const { data: response } = await $fetch('/api/blog/create', {
+        method: 'post',
+        body: draftBody.value
+    });
+    if (response) {
+        return
+    }
+}
+
+async function showContent() {
     console.log(editorContent.value);
     contentHTML.value = editorContent.value;
 }
-
 </script>
+
 
 <style>
 #content_container {
