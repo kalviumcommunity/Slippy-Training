@@ -13,6 +13,9 @@ export const firestore = getFirestore();
 
 export const blogCollection = firestore.collection('blogs')
 
+export const userCollection = firestore.collection('users')
+
+
 
 export const filterGetData = (snapshot: FirebaseFirestore.DocumentSnapshot<FirebaseFirestore.DocumentData>) => {
   const data = snapshot.data()
