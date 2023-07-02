@@ -22,6 +22,8 @@ export default defineEventHandler(async (event) => {
   };
   console.log(data);
 
+  //> require('crypto').randomBytes(64).toString('hex')
+  
   return document
     .create(data)
     .then(() => {
