@@ -3,7 +3,7 @@ import { blogCollection, filterGetData } from '../utils/firebase';
 
 export default defineEventHandler(async (event: object) => {
   // Perform the GET request
-  const snapshot = await blogCollection.get();
+  const snapshot = await blogCollection.select('id', 'createdAt', 'title', 'authorName').get();
 
   // Extract the data from the snapshot
   const data:any[] = [];
@@ -12,5 +12,5 @@ export default defineEventHandler(async (event: object) => {
   });
 
 
-  return { status: true, data: data };
+  return  data 
 });
