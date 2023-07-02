@@ -43,6 +43,7 @@ import user from '../assests/images/formimage.png'
 import github from '../assests/images/github.png'
 import linkedin from "../assests/images/linkedIn.png"
 import email from "../assests/images/email.png"
+import setLocalStorage from '../composables/storage'
 
 const userNameref = ref('')
 const userPasswordref = ref('')
@@ -84,17 +85,20 @@ async function signup() {
         });
 
         const data = await response.json();
+        console.log(data)
         authorizer(data)
     } catch (error) {
         console.error(error);
     }
-    function authorizer(data) {
+    async function authorizer(data) {
         // Save the JWT token to cookies
 
         document.cookie = `token=${data.token}; path=/;`
+        await setLocalStorage(data.data)
+
         // Redirect to the home page
-        if (data.message == 'signedUp'||data.status==200) {
-            window.location.href = '/'
+        if (data.message == 'signedUp' || data.status == 200) {
+            window.location.href = '/profile'
         }
     }
 
