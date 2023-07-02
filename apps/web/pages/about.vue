@@ -12,7 +12,7 @@
                 </div>
                 <div class="flex justigy-center items-center flex-col font-bold text-white">
                         <img :src="profileimg" alt="" class="h-56">
-                        <h1>Baliji S</h1>
+                        <h1>Balaji S</h1>
                 </div>
                 <div class="flex justigy-center items-center flex-col font-bold text-white">
                         <img :src="profileimg" alt="" class="h-56">
