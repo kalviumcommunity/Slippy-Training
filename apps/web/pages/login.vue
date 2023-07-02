@@ -6,13 +6,14 @@
                     <img :src="user" alt="" class="w-4/5">
                 </div>
                 <div class="bg-orange-500 w-1/2 h-1/1 flex items-center justify-center flex-col text-black">
-                    <h1 class="text-xl font-bold  flex items-center justify-center text-center pb-6">Welcome Back! Sign In to continue on Blogify</h1>
+                    <h1 class="text-xl font-bold  flex items-center justify-center text-center pb-6">Welcome Back! Sign In
+                        to continue on Blogify</h1>
                     <h2>Enter youe Email-Id</h2>
-                    <input type="text" class="w-4/5 h-8 mb-2 bg-grey-200">
+                    <input v-model="userEmailref" type="text" class="w-4/5 h-8 mb-2 bg-grey-200">
 
                     <h2>Enter your Password</h2>
-                    <input type="text" class="w-4/5 h-8 mb-5">
-                    <button class="rounded-full bg-white px-10 py-2 font-bold">Login</button>
+                    <input v-model="userPassref" type="password" class="w-4/5 h-8 mb-5">
+                    <button class="rounded-full bg-white px-10 py-2 font-bold" @click="login">Login</button>
                     <h1>or</h1>
                     <h1>Don't already have an account? <u>Sign up</u></h1>
                     <h1>or</h1>
@@ -33,6 +34,38 @@ import user from '../assests/images/formimage.png'
 import github from '../assests/images/github.png'
 import linkedin from "../assests/images/linkedIn.png"
 import email from "../assests/images/email.png"
+
+const userEmailref = ref('')
+const userPassref = ref('')
+
+async function login() {
+
+    let credntials = {
+        email: userEmailref.value,
+        password: userPassref.value,
+    }
+
+    if (
+        userEmailref.value === '' ||
+        userPassref.value === ''
+    ) {
+        return console.log('Please fill the credentials')
+    }
+
+
+    try {
+        const response = await fetch('/api/auth/login', {
+            method: 'POST',
+
+            body: JSON.stringify(credntials)
+        });
+
+        const data = await response.json();
+        return console.log(data);
+    } catch (error) {
+        return console.error(error);
+    }
+}
 
 </script>
 
