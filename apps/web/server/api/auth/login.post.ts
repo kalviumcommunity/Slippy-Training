@@ -19,7 +19,6 @@ export default defineEventHandler(async (event) => {
   }
 
   let user = GetData(document);
-  console.log(user);
 
   if (user.password) {
     const isPasswordValid = await bcrypt.compare(password, user.password);
@@ -37,7 +36,7 @@ export default defineEventHandler(async (event) => {
     }
   }
 
-  return { message: "Logged In ", token: token };
+  return { message: "loggedIn", token: token, status: 200 };
 });
 
 

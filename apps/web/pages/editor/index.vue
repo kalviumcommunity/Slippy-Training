@@ -21,9 +21,10 @@
       <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mb-2" @click="draft">
         DRAFT
       </button>
-      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4" @click="showContent">
+      <!-- currently in beta -->
+      <!-- <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4" @click="showContent">
         PREVIEW
-      </button>
+      </button> -->
     </div>
   </div>
 
@@ -101,11 +102,6 @@ watch(editorContent, () => {
 async function publish() {
 
   const token = useCookie('token').value
-  const headers = {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${token}` // Add the token to the Authorization header
-  };
-
   const body = {
     publishBody: publishBody.value
   };
@@ -132,19 +128,37 @@ async function publish() {
   }
 }
 
-
 async function draft() {
-  const { data: response } = await $fetch('/api/blog/create', {
-    method: 'post',
-    body: draftBody.value
-  });
-  if (response) {
-    return
+
+  const token = useCookie('token').value
+  const body = {
+    publishBody: draftBody.value
+  };
+
+  try {
+    const response = await fetch('/api/blog/create', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}` 
+      },
+      body: JSON.stringify(body)
+    });
+
+    const data = await response.json();
+    // Process the response data
+    if (data) {
+      console.log(data);
+      // Handle the response accordingly
+    }
+  } catch (error) {
+    console.error(error);
+    // Handle the error
   }
+
 }
 
 async function showContent() {
-  console.log(editorContent.value);
   contentHTML.value = editorContent.value;
 }
 </script>
