@@ -24,7 +24,7 @@ export async function checkAuth(headers: any, KEY: any) {
     };
 
   try {
-    const userId = jwt.verify(token, KEY);
+     jwt.verify(token, KEY);
     return {
       message: "Authorized",
       statusCode: 200,
