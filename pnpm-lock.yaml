@@ -32,9 +32,6 @@ importers:
       bcrypt:
         specifier: ^5.1.0
         version: 5.1.0
-      dompurify:
-        specifier: ^3.0.4
-        version: 3.0.4
       firebase:
         specifier: ^9.23.0
         version: 9.23.0
@@ -4916,10 +4913,6 @@ packages:
     engines: {node: '>= 4'}
     dependencies:
       domelementtype: 2.3.0
-    dev: false
-
-  /dompurify@3.0.4:
-    resolution: {integrity: sha512-ae0mA+Qiqp6C29pqZX3fQgK+F91+F7wobM/v8DRzDqJdZJELXiFUx4PP4pK/mzUS0xkiSEx3Ncd9gr69jg3YsQ==}
     dev: false
 
   /domutils@3.0.1:
