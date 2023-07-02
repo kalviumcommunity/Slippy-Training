@@ -59,7 +59,7 @@ async function signup() {
         checkUserPasswordref.value === ''
     ) {
         return console.log('One or more fields are empty');
-    } 
+    }
 
 
 
@@ -84,11 +84,22 @@ async function signup() {
         });
 
         const data = await response.json();
-        console.log(data);
+        authorizer(data)
     } catch (error) {
         console.error(error);
     }
+    function authorizer(data) {
+        // Save the JWT token to cookies
+
+        document.cookie = `token=${data.token}; path=/;`
+        // Redirect to the home page
+        if (data.message == 'signedUp'||data.status==200) {
+            window.location.href = '/'
+        }
+    }
+
 }
+
 
 
 

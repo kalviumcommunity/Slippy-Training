@@ -68,7 +68,7 @@ function authorizer(data) {
 
   document.cookie = `token=${data.token}; path=/;`
   // Redirect to the home page
-  if (data.message == 'loggedIn') {
+  if (data.message == 'loggedIn' || data.status == 200) {
     window.location.href = '/'
   } else {
     console.log('Please enter the correct credentials')
