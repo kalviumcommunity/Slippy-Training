@@ -4,16 +4,20 @@
 <div class="flex justify-between mt-12 items-center">
 
 </div>
-    <div class="shadow rounded p-3 mt-5">
+    <div v-if="blogs" class="shadow rounded p-3 mt-5">   
         <BlogListingcard v-for="blog in blogs" :key="blog.id" :blog="blog"/>
     </div>
+    <div v-else>Loading...</div>
     </div>
 
 </template>
 
 <script setup >
-import { useBlogs } from '~/composables/useBlogs';
+// import { useBlogs } from '~/composables/useBlogs';
+// import useFetchBlogs from '~/compos/ables/useFetchBlogs';
 
-const {blogs} = useBlogs()
+// const {blogs} = useBlogs()
+const {data:blogs} = await useFetch("/api/blogs")
+
 </script>
 

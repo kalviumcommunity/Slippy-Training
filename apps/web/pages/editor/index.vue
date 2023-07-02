@@ -1,28 +1,56 @@
 <template>
     <div>
-        <h2 class="h-10 flex items-center justify-center">Edit with Quill</h2>
-    </div>
+  <h2 class="h-10 flex items-center w-9/12 justify-center text-3xl italic font-bold">Edit with Quill</h2>
+</div>
 
-    <div class="relative">
-        <div class="bg-gray-200 h-screen mx-8 mr-96">
-            <QuillEditor class="" theme="snow" :toolbar="toolbar" :modules="modules" v-model:content="editorContent"
-                content-type="html" />
-        </div>
-        <div class="absolute bottom-4 right-4 flex flex-col mb-9 mr-16">
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mb-2"
-                @click="publish">PUBLISH</button>
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mb-2" @click="draft">
-                DRAFT
-            </button>
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4"
-                @click="showContent">PREVIEW</button>
-        </div>
-    </div>
+<div class="relative">
+    <label class="ml-8 mr-3 text-2xl italic font-bold">Title:</label>
+  <input
+    type="text"
+    v-model="title"
+    placeholder="Enter the title"
+    class="mt-7  w-2/3 mb-8 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+  />
+  
 
-    <br>
-    <div id="content_container" class="ql-container ql-snow">
-        <div id="content" class="ql-editor" v-html="contentHTML"></div>
-    </div>
+  <div class="bg-gray-200 h-screen mx-8 mr-96">
+    <QuillEditor
+      class=""
+      theme="snow"
+      :toolbar="toolbar"
+      :modules="modules"
+      v-model:content="editorContent"
+      content-type="html"
+    />
+  </div>
+
+  <div class="absolute bottom-4 right-4 flex flex-col mb-9 mr-16">
+    <button
+      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mb-2"
+      @click="publish"
+    >
+      PUBLISH
+    </button>
+    <button
+      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mb-2"
+      @click="draft"
+    >
+      DRAFT
+    </button>
+    <button
+      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4"
+      @click="showContent"
+    >
+      PREVIEW
+    </button>
+  </div>
+</div>
+
+<br>
+<div id="content_container" class="ql-container ql-snow">
+  <div id="content" class="ql-editor" v-html="contentHTML"></div>
+</div>
+
 </template>
 
 <script setup>
@@ -71,14 +99,17 @@ const modules = [
 
 const editorContent = ref("<p>Type in your favorite blogs in here!! 😄😄😄</p>");
 const contentHTML = ref("");
+const title = ref("")
 
 const publishBody = ref({
     content: editorContent.value,
+    title:title,
     isPublished: true
 });
 
 const draftBody = ref({
     content: editorContent.value,
+    title:title,
     isPublished: false
 });
 
