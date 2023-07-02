@@ -20,7 +20,6 @@ export default defineEventHandler(async (event) => {
     password: hashedpassword,
     createdAt: new Date(),
   };
-  console.log(data);
 
   //> require('crypto').randomBytes(64).toString('hex')
   
