@@ -36,7 +36,7 @@ export default defineEventHandler(async (event) => {
     }
   }
 
-  return { message: "loggedIn", token: token };
+  return { message: "loggedIn", token: token, status: 200 };
 });
 
 

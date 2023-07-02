@@ -22,7 +22,7 @@ export default defineEventHandler(async (event) => {
   };
 
   //> require('crypto').randomBytes(64).toString('hex')
-  
+
   return document
     .create(data)
     .then(() => {
@@ -35,7 +35,7 @@ export default defineEventHandler(async (event) => {
         KEY
       );
       // console.log(token);
-      return { status: 200, data: token };
+      return { message: "signedUp", status: 200, token: token };
     })
     .catch((error) => {
       // console.log(error);
