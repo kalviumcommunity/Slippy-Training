@@ -1,6 +1,8 @@
 import jwt from "jsonwebtoken";
 // Check if the Authorization header is present
-export async function checkAuth(headers: any, KEY: any) {
+export async function checkAuth(headers: any) {
+  const config = useRuntimeConfig();
+  const KEY = config.key;
   // validating the headers
   const authHeader = headers.authorization;
   const token = authHeader && authHeader.split(" ")[1];
@@ -24,7 +26,7 @@ export async function checkAuth(headers: any, KEY: any) {
     };
 
   try {
-     jwt.verify(token, KEY);
+    jwt.verify(token, KEY);
     return {
       message: "Authorized",
       statusCode: 200,
@@ -35,5 +37,4 @@ export async function checkAuth(headers: any, KEY: any) {
       statusCode: 404,
     };
   }
-
 }

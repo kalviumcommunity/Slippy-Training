@@ -1,8 +1,6 @@
 import { blogCollection } from "../../utils/firebase";
 import { checkAuth } from "../../controllers/authoriseJWT";
 export default defineEventHandler(async (event) => {
-  const config = useRuntimeConfig();
-  const KEY = config.key;
   const body = await readBody(event);
 
   const { headers } = event.node.req;
@@ -14,7 +12,7 @@ export default defineEventHandler(async (event) => {
     createdAt: new Date(),
   };
 
-  const responceAuth = await checkAuth(headers, KEY);
+  const responceAuth = await checkAuth(headers);
 
   if (responceAuth?.statusCode === 401 || responceAuth?.statusCode === 404)
     return responceAuth;
