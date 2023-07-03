@@ -30,9 +30,9 @@
     <div class="absolute bottom-4 right-4 flex flex-col mb-9 mr-16">
       <button
         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mb-2"
-        @click="publish"
+        @click="update"
       >
-        PUBLISH
+        Update
       </button>
       <button
         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mb-2"
@@ -40,10 +40,12 @@
       >
         DRAFT
       </button>
-      <!-- currently in beta -->
-      <!-- <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4" @click="showContent">
+      <button
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4"
+        @click="showContent"
+      >
         PREVIEW
-      </button> -->
+      </button>
     </div>
   </div>
 
@@ -59,7 +61,6 @@ import BlotFormatter from "quill-blot-formatter";
 import ImageUploader from "quill-image-uploader";
 import "@vueup/vue-quill/dist/vue-quill.snow.css";
 import "quill-image-uploader/dist/quill.imageUploader.min.css";
-import { userDetails } from "~/composables/userDetails";
 
 const toolbar = [
   [{ header: [1, 2, false] }],
@@ -99,87 +100,68 @@ const modules = [
     },
   },
 ];
+const route = useRoute();
+const { data: res } = await useFetch(`/api/blog/${route.params.blogId}`);
+const editorContent = ref(res._rawValue.content);
+// const contentHTML = ref(res._rawValue.content);
+console.log(res._rawValue);
+const title = ref(res._rawValue.title);
 
-const editorContent = ref(
-  "<p>Type in your favorite blogs in here!! 😄😄😄</p>"
-);
-const contentHTML = ref("");
-const title = ref("");
-const data = await userDetails();
-
-const publishBody = ref({
+const updateBody = ref({
   content: editorContent.value,
   title: title,
   isPublished: true,
-  authorName: data.name,
-  userEmail: data.email,
 });
 
 const draftBody = ref({
   content: editorContent.value,
   title: title,
   isPublished: false,
-  authorName: data.name,
-  userEmail: data.email,
 });
 
 watch(editorContent, () => {
-  publishBody.value.content = editorContent.value;
+  updateBody.value.content = editorContent.value;
   draftBody.value.content = editorContent.value;
 });
 
-async function publish() {
-  const token = useCookie("token").value;
-
+async function update() {
   try {
-    const response = await fetch("/api/blog/create", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`, // Add the token to the Authorization header
-      },
-      body: JSON.stringify(publishBody.value),
-    });
-
-    const data = await response.json();
-    // Process the response data
-    if (data) {
-      console.log(data);
-      alert("Blog Poasted!");
+    const { data: response } = await useFetch(
+      `/api/blog/edit/${route.params.blogId}`,
+      {
+        method: "PATCH",
+        body: updateBody.value,
+      }
+    );
+    if (response) {
+      // console.log(response);
+      alert("Blog Updated!!");
       navigateTo("/blogs");
-      // Handle the response accordingly
+      return;
     }
   } catch (error) {
-    console.error(error);
-    // Handle the error
+    console.error("An error occurred:", error);
+    // Handle the error appropriately (e.g., show an error message to the user)
+  }
+}
+async function draft() {
+  const { data: response } = await useFetch(
+    `/api/blog/edit/${route.params.blogId}`,
+    {
+      method: "PATCH",
+      body: draftBody.value,
+    }
+  );
+  if (response) {
+    alert("Blog Drafted!!");
+    navigateTo("/blogs");
+    return;
   }
 }
 
-async function draft() {
-  const token = useCookie("token").value;
-
-  try {
-    const response = await fetch("/api/blog/create", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(draftBody.value),
-    });
-
-    const data = await response.json();
-    // Process the response data
-    if (data) {
-      console.log(data);
-      alert("Blog Drafted!");
-      navigateTo("/blogs");
-      // Handle the response accordingly
-    }
-  } catch (error) {
-    console.error(error);
-    // Handle the error
-  }
+async function showContent() {
+  console.log(editorContent.value);
+  contentHTML.value = editorContent.value;
 }
 </script>
 
