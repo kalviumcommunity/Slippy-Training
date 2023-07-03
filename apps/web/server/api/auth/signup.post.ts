@@ -1,6 +1,7 @@
 import { userCollection } from "~/server/utils/firebase";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { decodeCookie } from "~/server/controllers/decodeJWT";
 
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig();
@@ -25,7 +26,7 @@ export default defineEventHandler(async (event) => {
 
   return document
     .create(data)
-    .then(() => {
+    .then(async () => {
       const token = jwt.sign(
         {
           email: email,
@@ -35,7 +36,9 @@ export default defineEventHandler(async (event) => {
         KEY
       );
       // console.log(token);
-      return { message: "signedUp", status: 200, token: token };
+      let data = await decodeCookie(token);
+
+      return { message: "signedUp", status: 200, token: token, data: data };
     })
     .catch((error) => {
       // console.log(error);

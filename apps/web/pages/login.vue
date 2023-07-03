@@ -34,6 +34,7 @@ import user from '../assests/images/formimage.png'
 import github from '../assests/images/github.png'
 import linkedin from "../assests/images/linkedIn.png"
 import email from "../assests/images/email.png"
+import setLocalStorage from '~/composables/storage'
 
 const userEmailref = ref('')
 const userPassref = ref('')
@@ -63,13 +64,15 @@ async function login() {
   }
 }
 
-function authorizer(data) {
+async function authorizer(data) {
   // Save the JWT token to cookies
 
   document.cookie = `token=${data.token}; path=/;`
+  await setLocalStorage(data.data)
+
   // Redirect to the home page
   if (data.message == 'loggedIn' || data.status == 200) {
-    window.location.href = '/'
+    window.location.href = '/profile'
   } else {
     console.log('Please enter the correct credentials')
   }

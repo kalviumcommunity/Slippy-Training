@@ -1,4 +1,5 @@
 import { userCollection, GetData } from "~/server/utils/firebase";
+import { decodeCookie } from "~/server/controllers/decodeJWT";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
@@ -35,8 +36,11 @@ export default defineEventHandler(async (event) => {
       return { message: "Check you email or password", token: null };
     }
   }
-
-  return { message: "loggedIn", token: token, status: 200 };
+  let data = await decodeCookie(token);
+  return {
+    message: "loggedIn",
+    token: token,
+    status: 200,
+    data: data,
+  };
 });
-
-
