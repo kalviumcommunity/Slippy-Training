@@ -157,7 +157,6 @@ async function draft() {
     }
   } catch (error) {
     console.error(error);
-    // Handle the error
   }
 
 }
