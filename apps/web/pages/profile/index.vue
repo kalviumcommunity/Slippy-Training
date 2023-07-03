@@ -37,6 +37,10 @@
 
 <script setup >
 import { userDetails } from '~/composables/userDetails';
+definePageMeta({
+  middleware: ["auth"]
+  // or middleware: 'auth'
+})
 const { blogs } = useBlogs()
 let data = await userDetails();
 

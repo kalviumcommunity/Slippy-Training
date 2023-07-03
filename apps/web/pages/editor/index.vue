@@ -40,6 +40,10 @@ import BlotFormatter from 'quill-blot-formatter'
 import ImageUploader from 'quill-image-uploader';
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
 import 'quill-image-uploader/dist/quill.imageUploader.min.css';
+definePageMeta({
+  middleware: ["auth"]
+  // or middleware: 'auth'
+})
 
 const toolbar = [
   [{ header: [1, 2, false] }],
@@ -140,7 +144,7 @@ async function draft() {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}` 
+        'Authorization': `Bearer ${token}`
       },
       body: JSON.stringify(body)
     });

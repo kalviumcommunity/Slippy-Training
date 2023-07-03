@@ -35,7 +35,10 @@ import github from '../assests/images/github.png'
 import linkedin from "../assests/images/linkedIn.png"
 import email from "../assests/images/email.png"
 import setLocalStorage from '~/composables/storage'
-
+definePageMeta({
+    middleware: ["auth"]
+    // or middleware: 'auth'
+  })
 const userEmailref = ref('')
 const userPassref = ref('')
 
