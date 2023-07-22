@@ -86,16 +86,22 @@ const editorContent = ref("<p>Type in your favorite blogs in here!! 😄😄😄
 const contentHTML = ref("");
 const title = ref("")
 
+const data = await userDetails();
+
 const publishBody = ref({
   content: editorContent.value,
   title: title,
-  isPublished: true
+  isPublished: true,
+  authorName: data.name,
+  userEmail: data.email,
 });
 
 const draftBody = ref({
   content: editorContent.value,
   title: title,
-  isPublished: false
+  isPublished: false,
+  authorName: data.name,
+  userEmail: data.email,
 });
 
 watch(editorContent, () => {
@@ -106,9 +112,8 @@ watch(editorContent, () => {
 async function publish() {
 
   const token = useCookie('token').value
-  const body = {
-    publishBody: publishBody.value
-  };
+  const body =  publishBody.value
+  
 
   try {
     const response = await fetch('/api/blog/create', {
@@ -125,19 +130,21 @@ async function publish() {
     if (data) {
       console.log(data);
       // Handle the response accordingly
+      alert("Blog Published!");
+      navigateTo("/blogs");
     }
   } catch (error) {
     console.error(error);
     // Handle the error
+    
   }
 }
 
 async function draft() {
 
   const token = useCookie('token').value
-  const body = {
-    publishBody: draftBody.value
-  };
+  const body =  draftBody.value
+
 
   try {
     const response = await fetch('/api/blog/create', {
@@ -154,6 +161,8 @@ async function draft() {
     if (data) {
       console.log(data);
       // Handle the response accordingly
+      alert("Blog Drafted!");
+      navigateTo("/blogs");
     }
   } catch (error) {
     console.error(error);

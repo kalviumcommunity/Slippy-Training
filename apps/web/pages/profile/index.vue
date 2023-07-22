@@ -7,7 +7,7 @@
           <div class="p-4">
             <div class="font-bold text-xl mb-2">Hey, {{ data.name }}</div>
             <p class="text-gray-700 mb-2">Email:{{ data.email }}</p>
-            <p class="text-gray-700 mb-4">Number of blog posts: 10</p>
+            <p class="text-gray-700 mb-4">Number of blog: {{ response.length }}</p>
             <div class="flex justify-centre">
               <!-- beta -->
               <!-- <button class="px-4 py-2 bg-orange-500 text-white rounded">Edit Account</button> -->
@@ -27,7 +27,7 @@
           +</NuxtLink>
       </div>
       <div class="shadow rounded p-3 mt-5">
-        <BlogMyBlogs v-for="blog in blogs" :key="blog.id" :blog="blog" />
+        <BlogMyBlogs v-for="blog in response" :key="blog.id" :blog="blog"  @delete-click="handleDelete"/>
       </div>
     </div>
 
@@ -41,7 +41,34 @@ definePageMeta({
   middleware: ["auth"]
   // or middleware: 'auth'
 })
-const { blogs } = useBlogs()
+
+
+const token = useCookie('token').value
+
+const { data: response } = await useFetch(
+    `/api/myblogs`,
+    {
+      method: "GET",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    }
+  )
+
+  
+ 
+
+
+
+const handleDelete = async(id)=>{
+    const res = await $fetch(`/api/blog/delete/${id}`,{
+        method: "DELETE"
+    })
+
+    response.value = response.value.filter(respons=> respons.id!=id)
+}
+
 let data = await userDetails();
 
 async function logout() {
