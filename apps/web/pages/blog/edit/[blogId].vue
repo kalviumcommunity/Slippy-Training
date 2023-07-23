@@ -40,12 +40,7 @@
       >
         DRAFT
       </button>
-      <button
-        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4"
-        @click="showContent"
-      >
-        PREVIEW
-      </button>
+      
     </div>
   </div>
 
@@ -124,6 +119,7 @@ watch(editorContent, () => {
   draftBody.value.content = editorContent.value;
 });
 
+const token = useCookie('token').value
 async function update() {
   try {
     const { data: response } = await useFetch(
@@ -131,6 +127,10 @@ async function update() {
       {
         method: "PATCH",
         body: updateBody.value,
+        headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
       }
     );
     if (response) {
@@ -150,6 +150,10 @@ async function draft() {
     {
       method: "PATCH",
       body: draftBody.value,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
     }
   );
   if (response) {
@@ -159,10 +163,6 @@ async function draft() {
   }
 }
 
-async function showContent() {
-  console.log(editorContent.value);
-  contentHTML.value = editorContent.value;
-}
 </script>
 
 
