@@ -1,4 +1,4 @@
-import { verifyOnwer } from '~/server/controllers/verifyONwer';
+import { verifyOnwe } from '~/server/controllers/verifyOnwer';
 import { blogCollection, filterGetData } from '../../../utils/firebase';
 
 
