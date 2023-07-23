@@ -1,7 +1,7 @@
 import { checkAuth } from "./authoriseJWT";
 import { decodeCookie } from "./decodeJWT";
 
-export async function verifyOnwer(headers: any, blogId:string) {
+export async function verifyOnwe(headers: any, blogId:string) {
     const token = headers.authorization
     const responceAuth = await checkAuth(headers);
 
