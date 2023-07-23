@@ -1,6 +1,6 @@
 import { blogCollection } from '../../../utils/firebase';
 
-import { verifyOnwer } from '~/server/controllers/verifyONwer';
+import { verifyOnwe } from '~/server/controllers/verifyOnwer';
 
 export default defineEventHandler(async (event) => {
   const { headers } = event.node.req
