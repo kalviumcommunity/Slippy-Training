@@ -63,7 +63,11 @@ const { data: response } = await useFetch(
 
 const handleDelete = async(id)=>{
     const res = await $fetch(`/api/blog/delete/${id}`,{
-        method: "DELETE"
+        method: "DELETE",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
     })
 
     response.value = response.value.filter(respons=> respons.id!=id)
